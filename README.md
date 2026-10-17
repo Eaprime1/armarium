@@ -3,7 +3,7 @@ Private origin vault: conversations and documents kept exactly as they arrived, 
 # Armarium  א · Ա · A
 
 `prima-clock: 202610172005`
-`status: born; the kit came from custos (atelier/heritage-pipeline/armarium-bootstrap/, PR #462). No origin placed yet.`
+`status: born; the kit came from custos (atelier/heritage-pipeline/armarium-bootstrap/, PR #462). The hash rule is ratified (see RULES.md). No origin placed yet.`
 
 A private vault for **origins**: conversations and documents exactly as they arrived, kept
 byte for byte. Nothing here is edited. The first letter of three alphabets (Hebrew alef, Armenian
@@ -13,6 +13,9 @@ ayb, Latin A) marks step A of the Atrium pipeline: the origin.
 *armarius* was the keeper of that chest.
 
 ## Rules
+
+The short version is below; `RULES.md` has the ratified hash rule, the declared (not enforced) protection
+policy, the time rule, and how commission packs arrive.
 
 1. **Private.** Origins can hold private material. Review before the first commit.
 2. **Exact bytes.** An origin is stored as received. `.gitattributes` turns off line-ending
@@ -31,13 +34,18 @@ ayb, Latin A) marks step A of the Atrium pipeline: the origin.
 armarium/
   README.md
   .gitattributes                 * -text
-  tools/verify.sh                checks every origin against its hash
+  RULES.md                       the ratified rules in full
+  tools/verify.sh                checks every origin and every commission pack against its hash
   origins/<YYYYMMDDHHMM>-<slug>/
     origin.<ext>                 the exact bytes as received
     origin.sha256                `sha256sum origin.<ext> > origin.sha256`
     receipt.json                 who, when, from where (see below)
     amendments/                  dated notes that point at the origin
   packages/<slug>/package.json   the heritage package for that origin; appended to, never rewritten
+  commissions/<YYYYMMDDHHMM>-<slug>/
+    manifest.json                what the pack is, where it came from, what it holds
+    files.sha256                 `sha256sum -c files.sha256` from inside the pack folder
+    files/                       the documents, exact bytes
 ```
 
 ## Adding an origin
