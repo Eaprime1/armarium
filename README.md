@@ -1,4 +1,4 @@
-storage and vault and archive
+Private origin vault: conversations and documents kept exactly as they arrived, with their hashes beside them. Additive only.
 
 # Armarium  א · Ա · A
 
